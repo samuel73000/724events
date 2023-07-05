@@ -25,7 +25,8 @@ const EventList = () => {
       return true;
     }
     return false;
-  });
+  })
+  
   const changeType = (evtType) => {
     setCurrentPage(1);
     setType(evtType);
@@ -43,7 +44,7 @@ const EventList = () => {
           <h3 className="SelectTitle">Catégories</h3>
           <Select
             selection={Array.from(typeList)}
-            onChange={(value) => changeType(value)}
+            onChange={(value) =>  value ? changeType(value) : changeType(null)}
           />
           <div id="events" className="ListContainer">
             {filteredEvents.map((event) => (
