@@ -8,18 +8,24 @@ import "./style.scss";
 const Slider = () => {
   const { data } = useData();
   const [index, setIndex] = useState(0);
+  const [check, setCheck] = useState(false);
   const byDateDesc = data?.focus.sort((evtA, evtB) =>
     new Date(evtA.date) > new Date(evtB.date) ? -1 : 1
   );
   const nextCard = () => {
-    setTimeout(
-      () => setIndex(index < byDateDesc.length-1 ? index + 1 : 0),
-      5000
-    );
+  //   setTimeout(
+  //     length = 3 alors que max index = 2
+  //     // () => setIndex(index < byDateDesc.length-1 ? index+1  : 0),
+  //     5000
+  //   );
   };
   useEffect(() => {
     nextCard();
   });
+const handleChangeRadio = (i) =>{
+  setIndex(i)
+  setCheck(true)
+}
 
 
 
@@ -55,8 +61,8 @@ const Slider = () => {
                  key={`${event.id}`}
                    type="radio"
                    name="radio-button"
-                   checked= {radioIdx === index }
-                   onChange={() => setIndex(radioIdx)}
+                   checked= {radioIdx === index || check }
+                   onChange={() => handleChangeRadio(radioIdx)}
                  />
                ))}
                 

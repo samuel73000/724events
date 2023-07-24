@@ -15,8 +15,10 @@ import { useData } from "../../contexts/DataContext";
 const Page = () => {
 
   const  { last}   = useData();
+  
 
- 
+
+
   return (
   <>
     <header>
@@ -130,9 +132,8 @@ const Page = () => {
             "loading"
           ) : (
             <EventCard
-              imageSrc={last?.cover}
-              imageAlt={last?.title}
               title={last?.title}
+              imageSrc={last?.cover}
               date={new Date(last?.date)}
               small
               label="boom"
@@ -166,7 +167,7 @@ const Page = () => {
       <div className="col description">
         <Logo size="large" />
         <p>
-          Une agence événementielle propose des prestations de service
+          Une agence événementielle qui propose des prestations de service
           spécialisées dans la conception et l&apos;organisation de divers événements
           tels que des événements festifs, des manifestations sportives et
           culturelles, des événements professionnels
