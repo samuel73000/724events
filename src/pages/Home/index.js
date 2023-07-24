@@ -2,7 +2,6 @@ import Menu from "../../containers/Menu";
 import ServiceCard from "../../components/ServiceCard";
 import EventCard from "../../components/EventCard";
 import PeopleCard from "../../components/PeopleCard";
-
 import "./style.scss";
 import EventList from "../../containers/Events";
 import Slider from "../../containers/Slider";
@@ -14,9 +13,23 @@ import { useData } from "../../contexts/DataContext";
 
 const Page = () => {
 
-  const  { last}   = useData();
-  
+  /* ********** */
+  const { data } = useData();
 
+  /* ********** */
+  const last = data?.events.reduce((previousEvent, currentEvent) => {
+      const previousDate = new Date(previousEvent.date);
+      const currentDate = new Date(currentEvent.date);
+      return previousDate > currentDate ? previousEvent : currentEvent;
+  });
+
+  /* ********** */
+  const lastProps = {
+      cover: "",
+      title: "",
+      date: "",
+      ...last,
+  };
 
 
   return (
@@ -132,13 +145,13 @@ const Page = () => {
             "loading"
           ) : (
             <EventCard
-              title={last?.title}
-              imageSrc={last?.cover}
-              date={new Date(last?.date)}
+              title={lastProps?.title}
+              imageSrc={lastProps?.cover}
+              date={new Date(lastProps?.date)}
               small
-              label="boom"
+              label="dernier événement"
             />
-          )}
+          )};
 
       
       </div>

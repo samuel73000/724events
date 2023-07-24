@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useData } from "../../contexts/DataContext";
 import { displayMonth } from "../../helpers/Date";
 import "./style.scss";
+
 const Slider = () => {
   const { data } = useData();
   const [index, setIndex] = useState(0);
@@ -56,7 +57,7 @@ const Slider = () => {
           )}
         </div>
       </div>
-    </div> // restructuré le html, lignes 40 et 25, pas deux fois "event" dans la même section
+    </div> // restructuré le html, lignes 41 et 26, pas deux fois "event" dans la même section
   );
 };
 
