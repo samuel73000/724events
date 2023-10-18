@@ -16,6 +16,7 @@ const EventList = () => {
   const filteredEvents = (
     (!type
       ? data?.events
+      //  .filter qui filtre les events par le type 
       : data?.events.filter((event) => event.type === type)) || []
   ).filter((event, index) => {
     if (
